@@ -1,0 +1,35 @@
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-bg) 0%, #2d2323 100%);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-title { font-size: 3.5rem; font-weight: 700; }
+.hero-subtitle { font-size: 1.2rem; color: var(--gray-text); }
+
+/* Pricing */
+.pricing-card {
+    background: var(--pure-white);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.pricing-card.featured {
+    border: 2px solid var(--accent-orange);
+    transform: scale(1.05);
+}
+
+.pricing-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-orange);
+}
+
+/* CTA */
+.cta-section {
+    background-color: var(--accent-orange);
+    padding: 60px 0;
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policies - SecureAuto Admin</title>
+  <link rel="icon" type="image/png" href="../../assets/images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <a href="../admin-dashboard.html" class="navbar-brand">
+          <div class="brand-icon"><i class="bi bi-shield-check"></i></div>
+          <span>SecureAuto</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+          <li class="sidebar-menu-item"><a href="../admin-dashboard.html" class="sidebar-menu-link"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a></li>
+          <li class="sidebar-menu-item"><a href="../customers/customers-list.html" class="sidebar-menu-link"><i class="bi bi-people"></i><span>Customers</span></a></li>
+          <li class="sidebar-menu-item has-submenu open">
+            <a href="#" class="sidebar-menu-link"><i class="bi bi-file-earmark-text"></i><span>Policies</span><i class="bi bi-chevron-right submenu-arrow"></i></a>
+            <ul class="sidebar-submenu">
+              <li><a href="policies-list.html" class="sidebar-submenu-link active">All Policies</a></li>
+              <li><a href="add-policy.html" class="sidebar-submenu-link">Add Policy</a></li>
+              <li><a href="policy-renewals.html" class="sidebar-submenu-link">Renewals</a></li>
+              <li><a href="policy-lapsed.html" class="sidebar-submenu-link">Lapsed</a></li>
+            </ul>
+          </li>
+          <li class="sidebar-menu-item has-submenu">
+            <a href="#" class="sidebar-menu-link"><i class="bi bi-car-front"></i><span>Vehicles</span><i class="bi bi-chevron-right submenu-arrow"></i></a>
+            <ul class="sidebar-submenu">
+              <li><a href="../vehicles/vehicle-list.html" class="sidebar-submenu-link">All Vehicles</a></li>
+              <li><a href="../vehicles/add-vehicle.html" class="sidebar-submenu-link">Add Vehicle</a></li>
+            </ul>
+          </li>
+          <li class="sidebar-menu-item has-submenu">
+            <a href="#" class="sidebar-menu-link"><i class="bi bi-clipboard-check"></i><span>Claims</span><i class="bi bi-chevron-right submenu-arrow"></i></a>
+            <ul class="sidebar-submenu">
+              <li><a href="../claims/claims-list.html" class="sidebar-submenu-link">All Claims</a></li>
+              <li><a href="../claims/claim-approve.html" class="sidebar-submenu-link">Pending Approval</a></li>
+            </ul>
+          </li>
+          <li class="sidebar-menu-item has-submenu">
+            <a href="#" class="sidebar-menu-link"><i class="bi bi-receipt"></i><span>Billing</span><i class="bi bi-chevron-right submenu-arrow"></i></a>
+            <ul class="sidebar-submenu">
+              <li><a href="../billing/billing-list.html" class="sidebar-submenu-link">All Bills</a></li>
+              <li><a href="../billing/add-bill.html" class="sidebar-submenu-link">Generate Bill</a></li>
+            </ul>
+          </li>
+          <li class="sidebar-menu-item has-submenu">
+            <a href="#" class="sidebar-menu-link"><i class="bi bi-cash-stack"></i><span>Expenses</span><i class="bi bi-chevron-right submenu-arrow"></i></a>
+            <ul class="sidebar-submenu">
+              <li><a href="../expenses/expenses-list.html" class="sidebar-submenu-link">All Expenses</a></li>
+              <li><a href="../expenses/add-expense.html" class="sidebar-submenu-link">Add Expense</a></li>
+            </ul>
+          </li>
+          <li class="sidebar-menu-item has-submenu">
+            <a href="#" class="sidebar-menu-link"><i class="bi bi-bar-chart"></i><span>Reports</span><i class="bi bi-chevron-right submenu-arrow"></i></a>
+            <ul class="sidebar-submenu">
+              <li><a href="../reports/report-monthly-sales.html" class="sidebar-submenu-link">Monthly Sales</a></li>
+              <li><a href="../reports/report-vehicle-wise.html" class="sidebar-submenu-link">Vehicle-wise</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#" class="sidebar-menu-link text-danger" onclick="adminLogout()"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a>
+      </div>
+    </aside>
+    
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <h4 class="mb-0 d-none d-md-block">Policies</h4>
+        <div class="ms-auto d-flex align-items-center gap-3">
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+              <div class="avatar-placeholder avatar-sm">AD</div>
+              <span class="d-none d-md-inline">Admin</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item text-danger" href="#" onclick="adminLogout()"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+          <div>
+            <h2 class="mb-1">All Policies</h2>
+            <p class="text-gray mb-0">Manage insurance policies</p>
+          </div>
+          <a href="add-policy.html" class="btn btn-primary"><i class="bi bi-plus-lg me-2"></i>Add Policy</a>
+        </div>
+
+        <div class="card">
+          <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div class="input-group" style="width: 300px;">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control" id="searchPolicies" placeholder="Search policies..." data-testid="input-search-policies">
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+              <select class="form-select" style="width: auto;">
+                <option value="">All Types</option>
+                <option value="comprehensive">Comprehensive</option>
+                <option value="collision">Collision</option>
+                <option value="thirdparty">Third Party</option>
+              </select>
+              <select class="form-select" style="width: auto;">
+                <option value="">All Status</option>
+                <option value="active">Active</option>
+                <option value="expired">Expired</option>
+                <option value="pending">Pending</option>
+              </select>
+              <button class="btn btn-outline-primary"><i class="bi bi-download me-2"></i>Export</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Policy ID</th>
+                    <th>Customer</th>
+                    <th>Vehicle</th>
+                    <th>Type</th>
+                    <th>Premium</th>
+                    <th>Coverage</th>
+                    <th>Period</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="policiesTable">
+                  <tr>
+                    <td><strong>POL-2024-001</strong></td>
+                    <td>John Smith</td>
+                    <td>2023 Toyota Camry</td>
+                    <td><span class="badge badge-primary">Comprehensive</span></td>
+                    <td>$1,200</td>
+                    <td>$100,000</td>
+                    <td><div>Mar 15, 2024</div><small class="text-gray">to Mar 15, 2025</small></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></button>
+                      <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>POL-2024-002</strong></td>
+                    <td>Sarah Johnson</td>
+                    <td>2022 Honda CR-V</td>
+                    <td><span class="badge badge-info">Third Party</span></td>
+                    <td>$800</td>
+                    <td>$50,000</td>
+                    <td><div>Dec 20, 2023</div><small class="text-gray">to Dec 20, 2024</small></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></button>
+                      <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>POL-2024-003</strong></td>
+                    <td>Michael Brown</td>
+                    <td>2021 Ford F-150</td>
+                    <td><span class="badge badge-primary">Comprehensive</span></td>
+                    <td>$1,500</td>
+                    <td>$120,000</td>
+                    <td><div>Jan 10, 2024</div><small class="text-gray">to Jan 10, 2025</small></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></button>
+                      <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>POL-2023-015</strong></td>
+                    <td>Emily Davis</td>
+                    <td>2020 Chevrolet Malibu</td>
+                    <td><span class="badge badge-secondary">Collision</span></td>
+                    <td>$600</td>
+                    <td>$40,000</td>
+                    <td><div>Jun 01, 2023</div><small class="text-gray">to Jun 01, 2024</small></td>
+                    <td><span class="badge badge-danger">Expired</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></button>
+                      <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>POL-2024-004</strong></td>
+                    <td>Robert Wilson</td>
+                    <td>2024 Tesla Model 3</td>
+                    <td><span class="badge badge-primary">Comprehensive</span></td>
+                    <td>$1,800</td>
+                    <td>$150,000</td>
+                    <td><div>May 01, 2024</div><small class="text-gray">to May 01, 2025</small></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></button>
+                      <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <nav class="mt-4">
+              <ul class="pagination justify-content-center mb-0">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/admin.js"></script>
+</body>
+</html>

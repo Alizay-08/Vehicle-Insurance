@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claim Approval - SecureAuto Admin</title>
+  <link rel="icon" type="image/png" href="../../assets/images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <a href="../admin-dashboard.html" class="navbar-brand">
+          <div class="brand-icon"><i class="bi bi-shield-check"></i></div>
+          <span>SecureAuto</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+          <li class="sidebar-menu-item"><a href="../admin-dashboard.html" class="sidebar-menu-link"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a></li>
+          <li class="sidebar-menu-item"><a href="../customers/customers-list.html" class="sidebar-menu-link"><i class="bi bi-people"></i><span>Customers</span></a></li>
+          <li class="sidebar-menu-item has-submenu open">
+            <a href="#" class="sidebar-menu-link"><i class="bi bi-clipboard-check"></i><span>Claims</span><i class="bi bi-chevron-right submenu-arrow"></i></a>
+            <ul class="sidebar-submenu">
+              <li><a href="claims-list.html" class="sidebar-submenu-link">All Claims</a></li>
+              <li><a href="claim-approve.html" class="sidebar-submenu-link active">Pending Approval</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#" class="sidebar-menu-link text-danger" onclick="adminLogout()"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a>
+      </div>
+    </aside>
+    
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <h4 class="mb-0 d-none d-md-block">Claim Approval</h4>
+        <div class="ms-auto">
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+              <div class="avatar-placeholder avatar-sm">AD</div>
+              <span class="d-none d-md-inline">Admin</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item text-danger" href="#" onclick="adminLogout()"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+          <div>
+            <h2 class="mb-1">Pending Approval</h2>
+            <p class="text-gray mb-0">Review and approve/reject pending claims</p>
+          </div>
+        </div>
+
+        <!-- Claim Card 1 -->
+        <div class="card mb-4">
+          <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+              <h5 class="mb-1">CLM-2024-005</h5>
+              <small class="text-gray">Filed: Nov 28, 2024</small>
+            </div>
+            <span class="badge badge-warning fs-6">Pending Review</span>
+          </div>
+          <div class="card-body">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <h6 class="text-accent mb-3">Claim Details</h6>
+                <div class="row g-2">
+                  <div class="col-6"><p class="text-gray mb-1 small">Policy ID</p><p class="fw-medium mb-0">POL-2024-001</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Customer</p><p class="fw-medium mb-0">Robert Wilson</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Vehicle</p><p class="fw-medium mb-0">2023 Toyota Camry</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Incident Type</p><p class="fw-medium mb-0">Collision</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Incident Date</p><p class="fw-medium mb-0">Nov 25, 2024</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Location</p><p class="fw-medium mb-0">123 Main St, NYC</p></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h6 class="text-accent mb-3">Amount Details</h6>
+                <div class="row g-2">
+                  <div class="col-6"><p class="text-gray mb-1 small">Claimed Amount</p><p class="fw-bold fs-4 text-accent mb-0">$8,000</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Policy Coverage</p><p class="fw-medium mb-0">$100,000</p></div>
+                </div>
+                <div class="mt-3">
+                  <p class="text-gray mb-1 small">Description</p>
+                  <p class="mb-0">Rear-end collision at traffic signal. Other driver at fault. Police report filed.</p>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Approved Amount *</label>
+                <div class="input-group">
+                  <span class="input-group-text">$</span>
+                  <input type="number" class="form-control" id="approvedAmount1" value="8000" placeholder="Enter approved amount">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Remarks</label>
+                <input type="text" class="form-control" id="remarks1" placeholder="Add any remarks...">
+              </div>
+            </div>
+            <div class="d-flex gap-2 mt-4 flex-wrap">
+              <button class="btn btn-success" onclick="approveClaim('CLM-2024-005')"><i class="bi bi-check-lg me-2"></i>Approve</button>
+              <button class="btn btn-danger" onclick="rejectClaim('CLM-2024-005')"><i class="bi bi-x-lg me-2"></i>Reject</button>
+              <button class="btn btn-outline-secondary"><i class="bi bi-eye me-2"></i>View Documents</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Claim Card 2 -->
+        <div class="card mb-4">
+          <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+              <h5 class="mb-1">CLM-2024-003</h5>
+              <small class="text-gray">Filed: Nov 15, 2024</small>
+            </div>
+            <span class="badge badge-info fs-6">Under Review</span>
+          </div>
+          <div class="card-body">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <h6 class="text-accent mb-3">Claim Details</h6>
+                <div class="row g-2">
+                  <div class="col-6"><p class="text-gray mb-1 small">Policy ID</p><p class="fw-medium mb-0">POL-2024-003</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Customer</p><p class="fw-medium mb-0">Michael Brown</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Vehicle</p><p class="fw-medium mb-0">2021 Ford F-150</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Incident Type</p><p class="fw-medium mb-0">Collision</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Incident Date</p><p class="fw-medium mb-0">Nov 10, 2024</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Location</p><p class="fw-medium mb-0">Highway 101, CA</p></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h6 class="text-accent mb-3">Amount Details</h6>
+                <div class="row g-2">
+                  <div class="col-6"><p class="text-gray mb-1 small">Claimed Amount</p><p class="fw-bold fs-4 text-accent mb-0">$25,000</p></div>
+                  <div class="col-6"><p class="text-gray mb-1 small">Policy Coverage</p><p class="fw-medium mb-0">$120,000</p></div>
+                </div>
+                <div class="mt-3">
+                  <p class="text-gray mb-1 small">Description</p>
+                  <p class="mb-0">Multi-vehicle accident on highway. Significant front-end damage. Awaiting repair estimates.</p>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Approved Amount *</label>
+                <div class="input-group">
+                  <span class="input-group-text">$</span>
+                  <input type="number" class="form-control" id="approvedAmount2" value="20000" placeholder="Enter approved amount">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Remarks</label>
+                <input type="text" class="form-control" id="remarks2" placeholder="Add any remarks...">
+              </div>
+            </div>
+            <div class="d-flex gap-2 mt-4 flex-wrap">
+              <button class="btn btn-success" onclick="approveClaim('CLM-2024-003')"><i class="bi bi-check-lg me-2"></i>Approve</button>
+              <button class="btn btn-danger" onclick="rejectClaim('CLM-2024-003')"><i class="bi bi-x-lg me-2"></i>Reject</button>
+              <button class="btn btn-outline-secondary"><i class="bi bi-eye me-2"></i>View Documents</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/admin.js"></script>
+  <script>
+    function approveClaim(claimId) {
+      showToast('Claim ' + claimId + ' approved successfully!', 'success');
+      setTimeout(() => location.reload(), 1500);
+    }
+    function rejectClaim(claimId) {
+      if (confirm('Are you sure you want to reject this claim?')) {
+        showToast('Claim ' + claimId + ' rejected.', 'error');
+        setTimeout(() => location.reload(), 1500);
+      }
+    }
+  </script>
+</body>
+</html>

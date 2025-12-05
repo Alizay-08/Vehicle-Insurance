@@ -1,0 +1,180 @@
+/* /* ------------------------------
+   AUTH LAYOUT
+------------------------------ */
+
+.auth-page {
+    background: linear-gradient(135deg, var(--primary-bg), #2a1f1f);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+    font-family: "Poppins", sans-serif;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 1180px;
+    display: flex;
+    background: var(--secondary-bg);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+
+/* ------------------------------
+   LEFT SECTION
+------------------------------ */
+
+.auth-left {
+    flex: 1;
+    padding: 60px 40px;
+    background: linear-gradient(135deg,#1D1616,#241A1A,#2C1E1E);
+    color: var(--pure-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-left-content {
+    max-width: 420px;
+}
+
+.auth-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.auth-subtitle {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.auth-features {
+    margin-top: 25px;
+}
+
+.auth-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.auth-feature i {
+    color: var(--accent-orange);
+    font-size: 18px;
+}
+
+/* Brand */
+.navbar-brand {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand-icon {
+    background: var(--accent-orange);
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+/* ------------------------------
+   RIGHT SECTION
+------------------------------ */
+
+.auth-right {
+    flex: 1;
+    padding: 60px 40px;
+    background: var(--secondary-bg);
+    display: flex;
+    align-items: center;
+}
+
+.auth-form-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+/* ------------------------------
+   INPUT STYLING
+------------------------------ */
+
+.input-group-text {
+    background: var(--pure-white);
+    border-right: none;
+}
+
+.form-control {
+    border-left: none;
+    padding: 12px 14px;
+    font-size: 15px;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(255,157,0,0.3);
+    border-color: var(--accent-orange);
+}
+
+/* Password Toggle */
+.password-toggle {
+    border-left: none !important;
+    border-radius: 0 8px 8px 0;
+}
+
+.password-toggle i {
+    font-size: 18px;
+}
+
+/* ------------------------------
+   BUTTONS
+------------------------------ */
+
+.btn-primary {
+    background: var(--accent-orange) !important;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(255,157,0,0.4);
+}
+
+/* Outline small button */
+.btn-outline-dark {
+    border-radius: 8px;
+    padding: 8px 15px;
+}
+
+.text-accent {
+    color: var(--accent-orange) !important;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+
+@media (max-width: 992px) {
+    .auth-left {
+        display: none;
+    }
+    .auth-right {
+        padding: 40px 25px;
+    }
+}

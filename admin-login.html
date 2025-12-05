@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SecureAuto Admin Login - Access the administration portal.">
+  <title>Admin Login - SecureAuto Insurance</title>
+  
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pages/pages-auth.css">
+
+</head>
+<body class="auth-page">
+  <div class="auth-container">
+    <div class="auth-left" style="background: linear-gradient(135deg, #1D1616 0%, #2d2424 100%);">
+      <div class="auth-left-content">
+        <a href="../public/index.html" class="navbar-brand mb-5 d-inline-block">
+          <div class="brand-icon"><i class="bi bi-shield-check"></i></div>
+          <span>SecureAuto</span>
+        </a>
+        
+        <h1 class="auth-title">Admin Portal</h1>
+        <p class="auth-subtitle">Secure access to the administration dashboard for managing policies, claims, and customers.</p>
+        
+        <div class="auth-features mt-5">
+          <div class="auth-feature">
+            <i class="bi bi-people-fill"></i>
+            <span>Manage Customers</span>
+          </div>
+          <div class="auth-feature">
+            <i class="bi bi-file-earmark-text-fill"></i>
+            <span>Handle Policies</span>
+          </div>
+          <div class="auth-feature">
+            <i class="bi bi-clipboard-check-fill"></i>
+            <span>Process Claims</span>
+          </div>
+          <div class="auth-feature">
+            <i class="bi bi-bar-chart-fill"></i>
+            <span>View Reports</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="auth-right">
+      <div class="auth-form-container">
+        <div class="text-center mb-4">
+          <div class="feature-icon mx-auto mb-4" style="width: 80px; height: 80px; font-size: 2rem; background: var(--primary-bg);">
+            <i class="bi bi-shield-lock" style="color: var(--accent-orange);"></i>
+          </div>
+          <h2 class="mb-2">Admin Sign In</h2>
+          <p class="text-gray">Enter your administrator credentials</p>
+        </div>
+        
+        <form id="adminLoginForm" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-person"></i></span>
+              <input type="text" class="form-control" name="username" required placeholder="Admin username" data-testid="input-admin-username">
+            </div>
+            <div class="invalid-feedback">Please enter your username.</div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock"></i></span>
+              <input type="password" class="form-control" name="password" required placeholder="Admin password" data-testid="input-admin-password">
+              <button type="button" class="btn btn-outline-secondary password-toggle" tabindex="-1">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="invalid-feedback">Please enter your password.</div>
+          </div>
+          
+          <div class="d-flex justify-content-between align-items-center gap-2 mb-4">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="remember" name="remember">
+              <label class="form-check-label" for="remember">Keep me signed in</label>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary w-100 btn-lg mb-4" data-testid="button-admin-login">
+            <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+          </button>
+          
+          <div class="text-center">
+            <a href="../public/index.html" class="text-gray">
+              <i class="bi bi-arrow-left me-2"></i>Back to Main Site
+            </a>
+          </div>
+        </form>
+        
+        <div class="mt-5 pt-4 border-top text-center">
+          <p class="text-gray small mb-2">Customer account?</p>
+          <a href="../auth/login.html" class="btn btn-outline-dark btn-sm">
+            <i class="bi bi-person me-2"></i>Customer Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/auth.js"></script>
+</body>
+</html>

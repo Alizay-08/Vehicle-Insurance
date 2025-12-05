@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register for a SecureAuto Insurance account and start protecting your vehicle today.">
+  <title>Register - SecureAuto Insurance</title>
+  
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pages/pages-auth.css">
+
+</head>
+<body class="auth-page">
+  <div class="auth-container">
+    <div class="auth-left">
+      <div class="auth-left-content">
+        <a href="../public/index.html" class="navbar-brand mb-5 d-inline-block">
+          <div class="brand-icon"><i class="bi bi-shield-check"></i></div>
+          <span>SecureAuto</span>
+        </a>
+        
+        <h1 class="auth-title">Join SecureAuto</h1>
+        <p class="auth-subtitle">Create your account and get protected in minutes.</p>
+        
+        <div class="auth-features mt-5">
+          <div class="auth-feature">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>Quick Online Registration</span>
+          </div>
+          <div class="auth-feature">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>Instant Policy Quotes</span>
+          </div>
+          <div class="auth-feature">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>Secure Account Management</span>
+          </div>
+          <div class="auth-feature">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>24/7 Customer Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="auth-right">
+      <div class="auth-form-container">
+        <div class="text-center mb-4">
+          <h2 class="mb-2">Create Account</h2>
+          <p class="text-gray">Fill in your details to get started</p>
+        </div>
+        
+        <form id="registerForm" class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">First Name *</label>
+              <input type="text" class="form-control" name="firstName" required placeholder="John" data-testid="input-first-name">
+              <div class="invalid-feedback">Please enter your first name.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Last Name *</label>
+              <input type="text" class="form-control" name="lastName" required placeholder="Doe" data-testid="input-last-name">
+              <div class="invalid-feedback">Please enter your last name.</div>
+            </div>
+          </div>
+          
+          <div class="mb-3 mt-3">
+            <label class="form-label">Email Address *</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+              <input type="email" class="form-control" name="email" required placeholder="john.doe@email.com" data-testid="input-email">
+            </div>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Phone Number *</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+              <input type="tel" class="form-control" name="phone" required placeholder="(555) 123-4567" data-testid="input-phone">
+            </div>
+            <div class="invalid-feedback">Please enter your phone number.</div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Address</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+              <input type="text" class="form-control" name="address" placeholder="123 Main St, City, State" data-testid="input-address">
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Password *</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock"></i></span>
+              <input type="password" class="form-control" name="password" required minlength="8" placeholder="Min. 8 characters" data-testid="input-password">
+              <button type="button" class="btn btn-outline-secondary password-toggle" tabindex="-1">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="password-strength mt-2"></div>
+            <div class="invalid-feedback">Password must be at least 8 characters.</div>
+          </div>
+          
+          <div class="mb-4">
+            <label class="form-label">Confirm Password *</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+              <input type="password" class="form-control" name="confirmPassword" required placeholder="Confirm your password" data-testid="input-confirm-password">
+              <button type="button" class="btn btn-outline-secondary password-toggle" tabindex="-1">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="invalid-feedback">Please confirm your password.</div>
+          </div>
+          
+          <div class="form-check mb-4">
+            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+            <label class="form-check-label" for="agreeTerms">
+              I agree to the <a href="#" class="text-accent">Terms of Service</a> and <a href="#" class="text-accent">Privacy Policy</a>
+            </label>
+            <div class="invalid-feedback">You must agree to the terms.</div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary w-100 btn-lg mb-4" data-testid="button-register">
+            <i class="bi bi-person-plus me-2"></i>Create Account
+          </button>
+          
+          <div class="text-center">
+            <p class="text-gray mb-0">Already have an account? <a href="login.html" class="text-accent fw-semibold">Sign In</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing - SecureAuto Admin</title>
+  <link rel="icon" type="image/png" href="../../assets/images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <a href="../admin-dashboard.html" class="navbar-brand">
+          <div class="brand-icon"><i class="bi bi-shield-check"></i></div>
+          <span>SecureAuto</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+          <li class="sidebar-menu-item"><a href="../admin-dashboard.html" class="sidebar-menu-link"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a></li>
+          <li class="sidebar-menu-item"><a href="../customers/customers-list.html" class="sidebar-menu-link"><i class="bi bi-people"></i><span>Customers</span></a></li>
+          <li class="sidebar-menu-item has-submenu open">
+            <a href="#" class="sidebar-menu-link"><i class="bi bi-receipt"></i><span>Billing</span><i class="bi bi-chevron-right submenu-arrow"></i></a>
+            <ul class="sidebar-submenu">
+              <li><a href="billing-list.html" class="sidebar-submenu-link active">All Bills</a></li>
+              <li><a href="add-bill.html" class="sidebar-submenu-link">Generate Bill</a></li>
+            </ul>
+          </li>
+          <li class="sidebar-menu-item has-submenu">
+            <a href="#" class="sidebar-menu-link"><i class="bi bi-cash-stack"></i><span>Expenses</span><i class="bi bi-chevron-right submenu-arrow"></i></a>
+            <ul class="sidebar-submenu">
+              <li><a href="../expenses/expenses-list.html" class="sidebar-submenu-link">All Expenses</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#" class="sidebar-menu-link text-danger" onclick="adminLogout()"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a>
+      </div>
+    </aside>
+    
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <h4 class="mb-0 d-none d-md-block">Billing</h4>
+        <div class="ms-auto">
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+              <div class="avatar-placeholder avatar-sm">AD</div>
+              <span class="d-none d-md-inline">Admin</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item text-danger" href="#" onclick="adminLogout()"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+          <div>
+            <h2 class="mb-1">All Bills</h2>
+            <p class="text-gray mb-0">Manage billing and invoices</p>
+          </div>
+          <a href="add-bill.html" class="btn btn-primary"><i class="bi bi-plus-lg me-2"></i>Generate Bill</a>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <div class="card stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="stat-label mb-1">Total Billed</p>
+                  <h3 class="stat-value mb-0">$245,000</h3>
+                </div>
+                <div class="stat-icon bg-success-light"><i class="bi bi-currency-dollar text-success"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="stat-label mb-1">Paid</p>
+                  <h3 class="stat-value mb-0">$198,000</h3>
+                </div>
+                <div class="stat-icon bg-primary-light"><i class="bi bi-check-circle text-primary"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="stat-label mb-1">Outstanding</p>
+                  <h3 class="stat-value mb-0">$47,000</h3>
+                </div>
+                <div class="stat-icon bg-warning-light"><i class="bi bi-exclamation-circle text-warning"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div class="input-group" style="width: 300px;">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control" id="searchBills" placeholder="Search bills..." data-testid="input-search-bills">
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+              <select class="form-select" style="width: auto;">
+                <option value="">All Status</option>
+                <option value="paid">Paid</option>
+                <option value="pending">Pending</option>
+                <option value="overdue">Overdue</option>
+              </select>
+              <button class="btn btn-outline-primary"><i class="bi bi-download me-2"></i>Export</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Bill ID</th>
+                    <th>Policy</th>
+                    <th>Customer</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="billingTable">
+                  <tr>
+                    <td><strong>BILL-2024-001</strong></td>
+                    <td>POL-2024-001</td>
+                    <td>John Smith</td>
+                    <td>Annual Premium</td>
+                    <td>$1,200</td>
+                    <td>Dec 15, 2024</td>
+                    <td><span class="badge badge-success">Paid</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary"><i class="bi bi-printer"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>BILL-2024-002</strong></td>
+                    <td>POL-2024-002</td>
+                    <td>Sarah Johnson</td>
+                    <td>Annual Premium</td>
+                    <td>$800</td>
+                    <td>Dec 20, 2024</td>
+                    <td><span class="badge badge-warning">Pending</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-printer"></i></button>
+                      <button class="btn btn-sm btn-success"><i class="bi bi-check-lg"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>BILL-2024-003</strong></td>
+                    <td>POL-2024-003</td>
+                    <td>Michael Brown</td>
+                    <td>Annual Premium</td>
+                    <td>$1,500</td>
+                    <td>Jan 10, 2025</td>
+                    <td><span class="badge badge-success">Paid</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary"><i class="bi bi-printer"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>BILL-2024-004</strong></td>
+                    <td>POL-2023-015</td>
+                    <td>Emily Davis</td>
+                    <td>Renewal Premium</td>
+                    <td>$600</td>
+                    <td>Nov 01, 2024</td>
+                    <td><span class="badge badge-danger">Overdue</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-printer"></i></button>
+                      <button class="btn btn-sm btn-warning"><i class="bi bi-bell"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>BILL-2024-005</strong></td>
+                    <td>POL-2024-004</td>
+                    <td>Robert Wilson</td>
+                    <td>Annual Premium</td>
+                    <td>$1,800</td>
+                    <td>May 01, 2025</td>
+                    <td><span class="badge badge-success">Paid</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                      <button class="btn btn-sm btn-outline-primary"><i class="bi bi-printer"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <nav class="mt-4">
+              <ul class="pagination justify-content-center mb-0">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/admin.js"></script>
+</body>
+</html>
